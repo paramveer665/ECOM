@@ -51,6 +51,12 @@ export default function WebPLPWithFilterPage() {
     fetchData();
   }, []);
 
+  const [menuPortalTarget, setMenuPortalTarget] = useState(null);
+
+useEffect(() => {
+  setMenuPortalTarget(document.getElementById("menuPortalTarget"));
+}, []);
+
   async function fetchData() {
     const data = await getProducts();
     setProducts(data);
@@ -188,7 +194,7 @@ export default function WebPLPWithFilterPage() {
                 </div>
                 
                 <SelectBox
-                  menuPortalTarget={document.getElementById("menuPortalTarget")}
+                  menuPortalTarget={menuPortalTarget}
                   styles={{
                     menuPortal: base => ({ ...base, zIndex: 9999 }),
                     menu: base => ({ ...base, zIndex: 9999 })
